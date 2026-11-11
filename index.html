@@ -74,6 +74,7 @@ nav.main .btn{padding:10px 18px}
 .hero .meta div{border-left:1px solid #ffffff30;padding-left:14px}
 .hero .meta b{display:block;font-size:15px}
 .hero .meta span{font-size:13px;color:var(--mute)}
+.hero .meta i{font-style:normal}.hero .meta .s{display:none}
 .side-nums{position:absolute;right:24px;top:50%;transform:translateY(-50%);display:grid;gap:12px;font-family:var(--narrow);font-size:13px;color:#ffffff70;z-index:2}
 .side-nums b{color:#fff}
 @media (max-width:760px){
@@ -82,7 +83,13 @@ nav.main .btn{padding:10px 18px}
   .hero .ph img{object-position:58% 18%}
   .hero .ph::after{background:linear-gradient(0deg,#0b0b0c 0%,transparent 40%),linear-gradient(180deg,#0b0b0ccc 0%,transparent 22%)}
   .hero .copy{padding:6px 0 60px}
-  .hero h1{font-size:58px}
+  .hero h1{font-size:clamp(30px,11.2vw,56px);white-space:nowrap;margin:10px 0 14px}
+  .hero .meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .hero .meta div{padding-left:10px}
+  .hero .meta b{font-size:13.5px;line-height:1.25}
+  .hero .meta span{font-size:12px}
+  .hero .meta .l{display:none}.hero .meta .s{display:inline}
+  .hero .meta b{white-space:nowrap}
   .hero .meta{margin-top:30px;gap:18px}
   .side-nums{display:none}
 }
@@ -115,15 +122,15 @@ section{padding:110px 0}
 .zones .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}
 .zones .bar button{width:60px;height:40px;font-size:26px;color:var(--bone)}
 .zones h2{font-family:var(--narrow);font-size:15px;letter-spacing:.2em;font-weight:600;text-align:center}
-.pills{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 calc(50% - 130px);scrollbar-width:none;scroll-behavior:smooth}
+.pills{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 calc(50% - 105px);scrollbar-width:none;scroll-behavior:smooth}
 .pills::-webkit-scrollbar{display:none}
-.pill{flex:0 0 260px;aspect-ratio:1/2.15;border-radius:999px;overflow:hidden;position:relative;scroll-snap-align:center;background:#222;transition:transform .4s}
+.pill{flex:0 0 210px;aspect-ratio:1/2.15;border-radius:999px;overflow:hidden;position:relative;scroll-snap-align:center;background:#222;transition:transform .4s}
 .pill img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(.75)}
 .pill span{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-family:var(--narrow);font-size:22px;letter-spacing:.16em;font-weight:600;text-shadow:0 2px 12px #0008}
 .pill small{position:absolute;left:0;right:0;bottom:44px;text-align:center;color:#ffffffc0;font-size:12.5px;letter-spacing:.08em}
 .pill:hover img{filter:grayscale(0) brightness(.8)}
 .pill.on{outline:3px solid var(--teal);outline-offset:6px}
-@media (max-width:600px){.pill{flex-basis:200px}.pills{padding:0 calc(50% - 100px);gap:16px}.pill span{font-size:18px}}
+@media (max-width:600px){.pill{flex-basis:140px}.pills{padding:0 calc(50% - 70px);gap:12px}.pill span{font-size:14px}.pill small{bottom:26px;font-size:11px}.zones{padding:50px 0 56px!important}.zones .bar{margin-bottom:22px}}
 
 /* portfolio */
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
@@ -274,6 +281,18 @@ body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opa
 .gc-chip{width:38px;height:28px;border-radius:6px;background:linear-gradient(135deg,#e6cf8f,#a88a3f)}
 .gc-flip{margin-top:16px;font-size:13.5px;font-weight:600;color:var(--teal)}
 @media (max-width:900px){.gift{grid-template-columns:minmax(0,1fr);gap:34px}}
+@media (max-width:760px){
+  section{padding:56px 0}
+  #trabajos{padding-top:46px!important}
+  #proceso,#preguntas{padding-top:10px!important}
+  #giftcard{padding-top:56px!important}
+  .head{margin-bottom:24px}
+  .hero .copy{padding-bottom:40px!important}
+  .marquee{padding:12px 0}.marquee div{font-size:26px}
+  .prop{padding:56px 0 110px}
+  footer.site{padding:40px 0 36px}
+  .studio,.process{gap:28px}
+}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
 .reveal.in{opacity:1;transform:none}
 </style>
@@ -318,8 +337,8 @@ body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opa
         <a class="btn ghost" href="#zonas">Ver trabajos</a>
       </div>
       <div class="meta">
-        <div><b>Lunes a viernes</b><span>14 a 21 h</span></div>
-        <div><b>Diseño propio</b><span>a partir de tu idea</span></div>
+        <div><b><i class="l">Lunes a viernes</i><i class="s">Lun a vie</i></b><span>14 a 21 h</span></div>
+        <div><b>Diseño propio</b><span><i class="l">a partir de tu idea</i><i class="s">a medida</i></span></div>
         <div><b>La Paz 5434</b><span>Rosario</span></div>
       </div>
     </div>
@@ -622,7 +641,7 @@ function sendGift(e){e.preventDefault();
 gcBuild();
 
 /* aparición suave */
-const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}}),{threshold:.12});
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}}),{threshold:0,rootMargin:"0px 0px 120px 0px"});
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 </script>
 </body>
