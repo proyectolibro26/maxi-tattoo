@@ -226,6 +226,31 @@ footer.site .legal{border-top:1px solid var(--line);margin-top:36px;padding-top:
 .demo-pill{position:fixed;left:16px;bottom:16px;z-index:45;background:var(--teal);color:#0b0b0c;border-radius:999px;padding:10px 16px;font-size:13px;font-weight:600;box-shadow:0 8px 20px -8px #000}
 .wa-float{position:fixed;right:16px;bottom:16px;z-index:45;width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 20px -8px #000}
 .wa-float svg{width:28px;height:28px;fill:#fff}
+
+/* textura y franja */
+body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;background:#0b0b0c}
+.marquee div{display:flex;gap:48px;width:max-content;animation:mq 38s linear infinite;font-family:"Pirata One",serif;font-size:34px;color:#ffffff38;white-space:nowrap}
+.marquee span::after{content:"✦";font-family:var(--sans);font-size:14px;margin-left:48px;color:var(--teal);vertical-align:middle}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* cuidados y preguntas */
+.care{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.care div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.care b{display:block;color:#fff;margin:10px 0 4px;font-size:15.5px}
+.care p{color:var(--mute);font-size:14px;line-height:1.5}
+.care i{font-style:normal;font-size:12px;color:var(--teal);letter-spacing:.12em}
+@media (max-width:900px){.care{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-20px;padding-right:20px;scrollbar-width:none}.care::-webkit-scrollbar{display:none}.care div{flex:0 0 74%;scroll-snap-align:start}}
+.faq{max-width:860px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{list-style:none;cursor:pointer;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--teal);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--mute);margin-top:8px;max-width:62ch}
+.gbox{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:#0b0b0c;border:1px solid var(--teal);border-radius:14px;padding:22px;margin-top:14px}
+.gbox .gi{width:52px;height:52px;border-radius:12px;background:var(--teal);display:grid;place-items:center;color:#0b0b0c;font-weight:800;font-size:24px}
+.gbox b{display:block;color:#fff;font-size:17px;margin-bottom:4px}
+.gbox p{color:var(--mute);font-size:14.5px}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
 .reveal.in{opacity:1;transform:none}
 </style>
@@ -276,6 +301,8 @@ footer.site .legal{border-top:1px solid var(--line);margin-top:36px;padding-top:
     </div>
   </div>
 </header>
+
+<div class="marquee" aria-hidden="true"><div><span>Realismo</span><span>Retratos</span><span>Cover up</span><span>Black & grey</span><span>Mandalas</span><span>Maorí</span><span>Diseño a medida</span><span>Realismo</span><span>Retratos</span><span>Cover up</span><span>Black & grey</span><span>Mandalas</span><span>Maorí</span><span>Diseño a medida</span></div></div>
 
 <section id="servicios">
   <div class="wrap">
@@ -353,6 +380,32 @@ footer.site .legal{border-top:1px solid var(--line);margin-top:36px;padding-top:
   </div>
 </section>
 
+<section id="cuidados">
+  <div class="wrap">
+    <div class="head reveal"><h2 class="bl">Antes y después de tatuarte</h2><p>Para que el tatuaje cicatrice perfecto y se vea igual de bien dentro de diez años.</p></div>
+    <div class="care reveal">
+      <div><i>ANTES</i><b>Descansá y comé bien</b><p>Vení con el estómago lleno, hidratado y sin alcohol las 24 h previas.</p></div>
+      <div><i>DÍA 1 A 3</i><b>Lavado suave</b><p>Agua tibia y jabón neutro, secar con papel y una capa fina de crema.</p></div>
+      <div><i>2 SEMANAS</i><b>Sin sol ni pileta</b><p>Evitá mar, pileta y sol directo mientras cicatriza. No rasques la costra.</p></div>
+      <div><i>SIEMPRE</i><b>Protector solar</b><p>El sol apaga el negro y el color. Protector alto en la zona tatuada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="preguntas" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head reveal"><h2 class="bl">Preguntas frecuentes</h2></div>
+    <div class="faq reveal">
+      <details><summary>¿Cuánto sale un tatuaje?</summary><p>Depende del tamaño, la zona y el nivel de detalle. Mandá tu idea desde Turnos y te paso el presupuesto por WhatsApp.</p></details>
+      <details><summary>¿Hay que dejar seña?</summary><p>Sí, con la seña queda reservado tu turno y empiezo a trabajar en tu diseño. Se descuenta del total.</p></details>
+      <details><summary>¿Duele?</summary><p>Depende de la zona y de cada persona. Vamos a tu ritmo y hacemos pausas cuando lo necesites.</p></details>
+      <details><summary>¿Hacés cover up o retoques?</summary><p>Sí. Mandame una foto del tatuaje actual y vemos cómo taparlo o renovarlo.</p></details>
+      <details><summary>¿Puedo traer mi propio diseño?</summary><p>Claro. Podés traer una foto o una referencia y lo adaptamos a tu cuerpo y a tu estilo.</p></details>
+      <details><summary>Soy menor de 18, ¿puedo tatuarme?</summary><p>Consultame antes: vas a necesitar la autorización de tu madre, padre o tutor.</p></details>
+    </div>
+  </div>
+</section>
+
 <section id="estudio">
   <div class="wrap studio">
     <div class="img reveal"><img src="fotos/local.jpg" alt="Frente del estudio Maxi Tattoo, con el mural Nunca pierdas la fe"></div>
@@ -370,7 +423,7 @@ footer.site .legal{border-top:1px solid var(--line);margin-top:36px;padding-top:
   <div class="wrap">
     <div class="cols">
       <div><div class="logo goth" style="color:#fff">Maxi Denhoff<small>TATTOO STUDIO</small></div><p style="margin-top:14px">Tatuajes a medida en Rosario.</p></div>
-      <div><h5>ESTUDIO</h5><ul><li><a href="#servicios">Servicios</a></li><li><a href="#zonas">Trabajos</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#turnos">Turnos</a></li></ul></div>
+      <div><h5>ESTUDIO</h5><ul><li><a href="#servicios">Servicios</a></li><li><a href="#zonas">Trabajos</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#turnos">Turnos</a></li><li><a href="#cuidados">Cuidados</a></li><li><a href="#preguntas">Preguntas</a></li></ul></div>
       <div><h5>HORARIOS</h5><ul><li>Lunes a viernes</li><li>14 a 21 h</li><li>Rosario</li></ul></div>
       <div><h5>REDES</h5><ul><li><a href="https://wa.me/5493413853369" target="_blank" rel="noopener">WhatsApp 341 385-3369</a></li></ul><div class="soc"><a href="https://www.instagram.com/maxidenhoff/" target="_blank" rel="noopener" aria-label="Instagram de Maxi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2Zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm6.1-8.1a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21.4 8.1c-.1-1.5-.4-2.9-1.5-4s-2.5-1.4-4-1.5C14.3 2.5 9.7 2.5 8.1 2.6c-1.5.1-2.9.4-4 1.5S2.7 6.6 2.6 8.1c-.1 1.6-.1 6.2 0 7.8.1 1.5.4 2.9 1.5 4s2.5 1.4 4 1.5c1.6.1 6.2.1 7.8 0 1.5-.1 2.9-.4 4-1.5s1.4-2.5 1.5-4c.1-1.6.1-6.2 0-7.8Zm-2.1 9.7a3.1 3.1 0 0 1-1.8 1.8c-1.2.5-4.1.4-5.5.4s-4.3.1-5.5-.4a3.1 3.1 0 0 1-1.8-1.8c-.5-1.2-.4-4.1-.4-5.5s-.1-4.3.4-5.5a3.1 3.1 0 0 1 1.8-1.8c1.2-.5 4.1-.4 5.5-.4s4.3-.1 5.5.4a3.1 3.1 0 0 1 1.8 1.8c.5 1.2.4 4.1.4 5.5s.1 4.3-.4 5.5Z"/></svg><span>@maxidenhoff</span></a><a href="https://web.facebook.com/maxi.denhoff" target="_blank" rel="noopener" aria-label="Facebook de Maxi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg><span>Maxi Denhoff</span></a></div></div>
     </div>
@@ -391,13 +444,17 @@ footer.site .legal{border-top:1px solid var(--line);margin-top:36px;padding-top:
       <div><b>Apertura animada</b><span>Una entrada con tu marca, pensada para el celular.</span></div>
       <div><b>El estudio</b><span>Tu local, tus horarios y tu frase.</span></div>
       <div><b>Un link para tu bio</b><span>El mismo para Instagram, Facebook y Google.</span></div>
+      <div><b>Cuidados y preguntas</b><span>Respondé una vez lo que te preguntan siempre.</span></div>
+      <div><b>Ficha de Google</b><span>Aparecé en el buscador y en Maps con reseñas.</span></div>
+      <div><b>Diseño premium</b><span>Apertura animada, textura y detalles de estudio top.</span></div>
     </div>
+    <div class="gbox"><div class="gi">G</div><div><b>Te ubicamos en Google</b><p>Hoy si alguien busca "tatuador en Rosario" no te encuentra. Creamos y verificamos tu ficha de Google con dirección, horarios, fotos de tus trabajos, link a esta web y botón de WhatsApp, para que aparezcas en el buscador y en Google Maps y tus clientes te dejen reseñas.</p></div></div>
     <h3>PARA QUÉ TE SIRVE</h3>
     <ul class="why">
       <li>Te llegan los pedidos con zona, tamaño e idea ya escritos</li>
       <li>Dejás de responder "¿cuánto sale?" sin saber qué quieren</li>
       <li>Mostrás tu mejor trabajo ordenado, no perdido en el feed</li>
-      <li>Te encuentran en Google quienes buscan tatuador en Rosario</li>
+      <li>Aparecés en Google y en Maps cuando buscan tatuador en Rosario</li>
       <li>Organizás tus turnos dentro de tu horario</li>
       <li>Das una imagen más profesional para piezas grandes</li>
     </ul>
